@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="section-title">退房</view>
+
+  <view class="card">
+    <view class="info-row">
+      <text class="info-label">房间</text>
+      <text class="info-val bolder">{{room || '未选择'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">租期</text>
+      <text class="info-val">{{rentPeriod}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-subtitle">抄表登记</view>
+    <view class="field-row">
+      <view class="meter-item">
+        <text class="meter-label">💧 水表</text>
+        <input class="meter-input" type="digit" placeholder="本期读数" value="{{waterReading}}" bindinput="onWater" />
+      </view>
+      <view class="meter-item">
+        <text class="meter-label">⚡ 电表</text>
+        <input class="meter-input" type="digit" placeholder="本期读数" value="{{elecReading}}" bindinput="onElec" />
+      </view>
+    </view>
+  </view>
+
+  <view class="card field">
+    <text class="field-label">备注</text>
+    <input class="field-input" placeholder="选填" value="{{note}}" bindinput="onNote" />
+  </view>
+
+  <view class="notice card">
+    <text>⚠️ 退房后该房间密码将自动失效</text>
+  </view>
+
+  <view class="submit-bar">
+    <button class="btn-danger" bindtap="onSubmit">确认退房</button>
+  </view>
+</view>

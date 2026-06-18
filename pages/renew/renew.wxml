@@ -1,0 +1,62 @@
+<view class="container">
+  <view class="section-title">续租</view>
+
+  <!-- 选择订单 -->
+  <view class="card field" bindtap="onShowPicker">
+    <text class="field-label">选择订单</text>
+    <text class="field-val {{selectedOrder ? '' : 'placeholder'}}">
+      {{selectedOrder ? selectedOrder.label : '点击选择要续租的订单'}}
+    </text>
+    <text class="field-arrow">›</text>
+  </view>
+
+  <!-- 订单选择弹层 -->
+  <view class="picker-mask" wx:if="{{showPicker}}" bindtap="onShowPicker"></view>
+  <view class="picker-panel" wx:if="{{showPicker}}">
+    <view class="picker-title">活跃订单</view>
+    <scroll-view scroll-y class="picker-list">
+      <view
+        wx:for="{{orders}}" wx:key="_id"
+        class="picker-item {{selectedIdx === index ? 'active' : ''}}"
+        data-index="{{index}}"
+        bindtap="onSelectOrder"
+      >{{item.label}}</view>
+      <view wx:if="{{!orders.length}}" class="picker-empty">暂无活跃订单</view>
+    </scroll-view>
+  </view>
+
+  <!-- 续租信息 -->
+  <view class="card" wx:if="{{selectedOrder}}">
+    <view class="info-row">
+      <text class="info-label">原到期日</text>
+      <text class="info-val">{{originEnd}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">日租金</text>
+      <text class="info-val">¥{{selectedOrder.dailyPrice}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">延长至</text>
+      <picker mode="date" start="{{originEnd || today}}" bindchange="onDateChange">
+        <view class="info-val {{newEnd ? '' : 'placeholder'}}">{{newEnd || '选择新日期'}}</view>
+      </picker>
+    </view>
+    <view class="info-row" wx:if="{{extraDays > 0}}">
+      <text class="info-label">延长时间</text>
+      <text class="info-val">{{extraDays}} 天</text>
+    </view>
+    <view class="info-row" wx:if="{{extraPrice > 0}}">
+      <text class="info-label">续租费用</text>
+      <text class="info-val price">¥{{extraPrice}}</text>
+    </view>
+  </view>
+
+  <view class="card field" wx:if="{{selectedOrder}}">
+    <text class="field-label">备注</text>
+    <input class="field-input" placeholder="选填" value="{{note}}" bindinput="onNote" />
+  </view>
+
+  <view class="submit-bar" wx:if="{{selectedOrder}}">
+    <button class="btn-primary" bindtap="onSubmit">确认续租</button>
+  </view>
+</view>

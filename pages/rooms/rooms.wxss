@@ -1,0 +1,36 @@
+.filter-scroll {
+  background: var(--card);
+  padding-bottom: 4rpx;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin: 20rpx;
+  padding: 20rpx 24rpx;
+  background: var(--card);
+  border-radius: 14rpx;
+}
+.search-icon { font-size: 28rpx; opacity: 0.4; }
+.search-input { flex: 1; font-size: 28rpx; color: var(--text); }
+
+.room-list { padding: 0 20rpx 40rpx; }
+
+.room-card {
+  display: flex;
+  align-items: center;
+  background: var(--card);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 12rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.02);
+}
+.room-left { flex: 1; }
+.room-no { font-size: 32rpx; font-weight: 600; margin-bottom: 6rpx; }
+.room-meta { font-size: 24rpx; color: var(--text-light); }
+.room-price { color: var(--primary); font-weight: 500; }
+
+.room-right { text-align: right; margin-right: 16rpx; }
+.room-date { font-size: 22rpx; color: var(--text-light); margin-top: 6rpx; }
+.room-arrow { font-size: 36rpx; color: var(--text-light); opacity: 0.5; }

@@ -1,0 +1,42 @@
+<view class="container">
+  <view class="section-title">抄表登记</view>
+
+  <view class="card field" bindtap="onShowPicker">
+    <text class="field-label">房间</text>
+    <text class="field-val {{selectedRoom ? '' : 'placeholder'}}">{{selectedRoom || '点击选择'}}</text>
+    <text class="field-arrow">›</text>
+  </view>
+
+  <view class="picker-mask" wx:if="{{showPicker}}" bindtap="onShowPicker"></view>
+  <view class="picker-panel" wx:if="{{showPicker}}">
+    <view class="picker-title">选择房间</view>
+    <scroll-view scroll-y class="picker-list">
+      <view wx:for="{{rooms}}" wx:key="index"
+        class="picker-item {{selectedRoomIdx === index ? 'active' : ''}}"
+        data-index="{{index}}" bindtap="onSelectRoom">{{item}}</view>
+    </scroll-view>
+  </view>
+
+  <view class="card">
+    <view class="field">
+      <text class="field-label">月份</text>
+      <input class="field-input" value="{{month}}" disabled />
+    </view>
+    <view class="field">
+      <text class="field-label">💧 水表读数</text>
+      <input class="field-input" type="digit" placeholder="本期读数" value="{{water}}" bindinput="onWater" />
+    </view>
+    <view class="field">
+      <text class="field-label">⚡ 电表读数</text>
+      <input class="field-input" type="digit" placeholder="本期读数" value="{{elec}}" bindinput="onElec" />
+    </view>
+    <view class="field">
+      <text class="field-label">💰 实收租金</text>
+      <input class="field-input" type="digit" placeholder="选填" value="{{rent}}" bindinput="onRent" />
+    </view>
+  </view>
+
+  <view class="submit-bar">
+    <button class="btn-primary" bindtap="onSubmit">保存记录</button>
+  </view>
+</view>

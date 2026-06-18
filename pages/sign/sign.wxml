@@ -1,0 +1,83 @@
+<view class="container">
+  <view class="section-title">签单</view>
+
+  <!-- 选择房间 -->
+  <view class="card field" bindtap="onShowPicker">
+    <text class="field-label">房间</text>
+    <text class="field-val {{selectedRoom ? '' : 'placeholder'}}">{{selectedRoom || '点击选择房间'}}</text>
+    <text class="field-arrow">›</text>
+  </view>
+
+  <!-- 房间选择弹层 -->
+  <view class="picker-mask" wx:if="{{showRoomPicker}}" bindtap="onShowPicker"></view>
+  <view class="picker-panel" wx:if="{{showRoomPicker}}">
+    <view class="picker-title">选择房间</view>
+    <scroll-view scroll-y class="picker-list">
+      <view
+        wx:for="{{rooms}}" wx:key="index"
+        class="picker-item {{selectedRoomIdx === index ? 'active' : ''}}"
+        data-index="{{index}}"
+        bindtap="onSelectRoom"
+      >{{item}}</view>
+    </scroll-view>
+  </view>
+
+  <!-- 日期 -->
+  <view class="card field-row">
+    <view class="field-half">
+      <text class="field-label">入住日期</text>
+      <picker mode="date" start="{{today}}" bindchange="onStartDate">
+        <view class="field-val {{startDate ? '' : 'placeholder'}}">{{startDate || '选择日期'}}</view>
+      </picker>
+    </view>
+    <view class="field-half">
+      <text class="field-label">退房日期</text>
+      <picker mode="date" start="{{startDate || today}}" bindchange="onEndDate">
+        <view class="field-val {{endDate ? '' : 'placeholder'}}">{{endDate || '选择日期'}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 价格和来源 -->
+  <view class="card">
+    <view class="field">
+      <text class="field-label">日租价格 (¥)</text>
+      <input class="field-input" type="digit" placeholder="输入日租价" value="{{price}}" bindinput="onPrice" />
+    </view>
+    <view class="field-row">
+      <text class="field-label">订单来源</text>
+      <view class="source-row">
+        <view
+          wx:for="{{sources}}" wx:key="index"
+          class="source-btn {{source === item ? 'active' : ''}}"
+          data-src="{{item}}"
+          bindtap="onSource"
+        >{{item}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 租客信息 -->
+  <view class="card">
+    <view class="field">
+      <text class="field-label">租客姓名</text>
+      <input class="field-input" placeholder="请输入" value="{{tenantName}}" bindinput="onName" />
+    </view>
+    <view class="field">
+      <text class="field-label">租客电话</text>
+      <input class="field-input" type="number" placeholder="请输入" value="{{tenantPhone}}" bindinput="onPhone" />
+    </view>
+    <view class="field">
+      <text class="field-label">备注</text>
+      <input class="field-input" placeholder="选填" value="{{note}}" bindinput="onNote" />
+    </view>
+  </view>
+
+  <!-- 确认 -->
+  <view class="submit-bar">
+    <view class="preview-text" wx:if="{{nights > 0}}">
+      {{startDate}} ~ {{endDate}} · {{nights}}晚 · ¥{{totalPrice}}
+    </view>
+    <button class="btn-primary" bindtap="onSubmit">确认签单</button>
+  </view>
+</view>

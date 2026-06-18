@@ -1,0 +1,59 @@
+<view class="container">
+  <view class="page-title">数据看板</view>
+
+  <!-- 周期切换 -->
+  <view class="period-bar">
+    <view
+      wx:for="{{periods}}" wx:key="key"
+      class="period-btn {{period === item.key ? 'active' : ''}}"
+      data-period="{{item.key}}"
+      bindtap="onPeriodTap"
+    >{{item.label}}</view>
+  </view>
+
+  <!-- 概览数字 -->
+  <view class="summary-row">
+    <view class="summary-card card">
+      <view class="s-label">总收入</view>
+      <view class="s-val">¥{{totalRevenue}}</view>
+    </view>
+    <view class="summary-card card">
+      <view class="s-label">订单数</view>
+      <view class="s-val">{{orderCount}}</view>
+    </view>
+    <view class="summary-card card">
+      <view class="s-label">均单收入</view>
+      <view class="s-val">¥{{avgRevenue}}</view>
+    </view>
+  </view>
+
+  <!-- 图表 -->
+  <view class="card chart-card">
+    <view class="chart-title">{{title}} 收入分布</view>
+
+    <!-- 曲线图：月 -->
+    <view class="chart-wrap" wx:if="{{chartData.length && isLine}}">
+      <canvas type="2d" id="lineCanvas" class="line-canvas"
+        style="width:100%;height:380rpx;"
+        bindtouchstart="onChartTouch"
+      ></canvas>
+      <view class="chart-tip" wx:if="{{tip.label}}" style="left: {{tip.x}}px; top: {{tip.y}}px;">
+        <text>{{tip.label}}</text>
+        <text>¥{{tip.amount}}</text>
+      </view>
+    </view>
+
+    <!-- 柱状图：周 / 年 -->
+    <view class="chart-area" wx:elif="{{chartData.length}}">
+      <view class="bar-group" wx:for="{{chartData}}" wx:key="index">
+        <view class="bar-val">¥{{item.amount}}</view>
+        <view class="bar" style="height: {{item.percent > 0 ? item.percent : 4}}px;"></view>
+        <view class="bar-label">{{item.label}}</view>
+      </view>
+    </view>
+
+    <view class="chart-empty" wx:else>
+      <text>暂无数据</text>
+    </view>
+  </view>
+</view>

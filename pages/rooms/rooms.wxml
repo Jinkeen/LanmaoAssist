@@ -1,0 +1,50 @@
+<view class="container">
+
+  <scroll-view scroll-x class="filter-scroll">
+    <view class="filter-bar">
+      <view
+        wx:for="{{properties}}" wx:key="index"
+        class="filter-btn {{activeProp === index ? 'active' : ''}}"
+        data-index="{{index}}"
+        bindtap="onFilter"
+      >{{item}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="search-box">
+    <text class="search-icon">🔍</text>
+    <input
+      class="search-input"
+      placeholder="输入房号筛选（如 101）"
+      value="{{searchText}}"
+      bindinput="onSearch"
+    />
+  </view>
+
+  <view class="room-list">
+    <view
+      class="room-card"
+      wx:for="{{filteredRooms}}" wx:key="_id"
+      data-id="{{item._id}}"
+      bindtap="onRoomTap"
+    >
+      <view class="room-left">
+        <view class="room-no">{{item.displayNo}}</view>
+        <view class="room-meta">
+          <text class="room-price">¥{{item.price}}/晚</text>
+          <text wx:if="{{item.type}}"> · {{item.type}}</text>
+        </view>
+      </view>
+      <view class="room-right">
+        <view class="tag tag-empty">空房</view>
+      </view>
+      <text class="room-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{filteredRooms.length === 0}}">
+    <text class="empty-icon">🏠</text>
+    <text class="empty-text">无匹配房源</text>
+  </view>
+
+</view>

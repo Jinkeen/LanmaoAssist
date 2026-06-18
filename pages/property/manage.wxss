@@ -1,0 +1,119 @@
+.container { padding-bottom: 40rpx; }
+
+.header {
+  font-size: 40rpx; font-weight: 700;
+  padding: 40rpx 28rpx 20rpx;
+}
+
+/* === 房产 tab === */
+.prop-tabs {
+  display: flex; align-items: center;
+  padding: 0 20rpx; gap: 12rpx;
+}
+.tabs-scroll { flex: 1; }
+.tab-list { display: flex; gap: 12rpx; padding: 8rpx 0; }
+.tab-item {
+  padding: 16rpx 36rpx;
+  background: var(--card);
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  white-space: nowrap;
+}
+.tab-item.active {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+.tab-add {
+  padding: 16rpx 28rpx;
+  background: transparent;
+  border: 2rpx dashed var(--border);
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+.tab-del {
+  padding: 16rpx;
+  font-size: 28rpx;
+}
+
+/* === 房间区 === */
+.room-section { margin-top: 28rpx; }
+.room-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 28rpx; margin-bottom: 16rpx;
+}
+.section-label { font-size: 28rpx; font-weight: 600; }
+.btn-add-room {
+  font-size: 26rpx; color: var(--primary);
+  padding: 8rpx 20rpx; border: 2rpx solid var(--primary);
+  border-radius: 10rpx;
+}
+
+.room-grid {
+  display: flex; flex-wrap: wrap; gap: 16rpx;
+  padding: 0 20rpx;
+}
+.room-cell {
+  width: calc(50% - 8rpx);
+  background: var(--card);
+  border-radius: 16rpx;
+  padding: 28rpx 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.02);
+}
+.cell-no {
+  font-size: 40rpx; font-weight: 700;
+  color: var(--text); margin-bottom: 8rpx;
+}
+.cell-type { font-size: 24rpx; color: var(--text-light); margin-bottom: 12rpx; }
+.cell-price { font-size: 26rpx; color: var(--primary); font-weight: 500; }
+.cell-month { margin-left: 12rpx; color: var(--text-secondary); }
+
+.room-add {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8rpx; border: 2rpx dashed var(--border);
+  background: transparent; min-height: 160rpx;
+}
+.cell-plus { font-size: 48rpx; color: var(--text-light); }
+.cell-hint { font-size: 24rpx; color: var(--text-light); }
+
+/* === 空状态 === */
+.empty-zone {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 120rpx 0; gap: 20rpx;
+}
+.empty-icon { font-size: 80rpx; opacity: 0.5; }
+.empty-text { color: var(--text-light); font-size: 28rpx; }
+
+/* === 弹窗 === */
+.dialog-mask {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.35); z-index: 100;
+}
+.dialog-panel {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 101;
+  background: var(--card); border-radius: 24rpx 24rpx 0 0;
+  padding: 32rpx 28rpx 48rpx;
+}
+.dialog-title { font-size: 34rpx; font-weight: 700; margin-bottom: 28rpx; }
+.dialog-input {
+  background: var(--bg); border-radius: 12rpx;
+  padding: 22rpx; font-size: 28rpx; margin-bottom: 16rpx;
+}
+.dialog-btns {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 24rpx;
+}
+.dialog-right { display: flex; gap: 16rpx; }
+
+.form-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+.form-label { font-size: 28rpx; font-weight: 500; flex-shrink: 0; min-width: 120rpx; }
+.form-row .dialog-input { flex: 1; margin-bottom: 0; }
+.picker-val { font-size: 28rpx; color: var(--text-secondary); }
+
+.del-link { color: var(--danger); font-size: 26rpx; }

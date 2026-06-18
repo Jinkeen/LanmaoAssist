@@ -1,0 +1,30 @@
+.tab-row {
+  display: flex; background: var(--card); padding: 12rpx 20rpx;
+}
+.tab-item {
+  flex: 1; text-align: center; padding: 18rpx 0;
+  font-size: 28rpx; color: var(--text-secondary);
+  border-radius: 12rpx;
+}
+.tab-item.active { background: var(--primary-light); color: var(--primary); font-weight: 600; }
+
+.sum-row { display: flex; margin-top: 20rpx; }
+.sum-item { flex: 1; text-align: center; }
+.sum-label { font-size: 24rpx; color: var(--text-light); margin-bottom: 8rpx; }
+.sum-val { font-size: 36rpx; font-weight: 700; }
+.sum-val.income { color: var(--success); }
+.sum-val.expense { color: var(--danger); }
+.sum-val.net { color: var(--primary); }
+.sum-divider { width: 2rpx; background: var(--border); margin: 8rpx 0; }
+
+.record-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 22rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+.record-item:last-child { border-bottom: none; }
+.rec-room { font-size: 28rpx; font-weight: 500; }
+.rec-meta { font-size: 24rpx; color: var(--text-light); margin-top: 4rpx; }
+.rec-amount { font-size: 32rpx; font-weight: 600; }
+.rec-amount.income { color: var(--success); }
+.rec-amount.expense { color: var(--danger); }

@@ -1,0 +1,92 @@
+<view class="container">
+  <view class="header">房产管理</view>
+
+  <!-- 房产切换 tab -->
+  <view class="prop-tabs">
+    <scroll-view scroll-x class="tabs-scroll">
+      <view class="tab-list">
+        <view
+          wx:for="{{properties}}" wx:key="_id"
+          class="tab-item {{activePropIdx === index ? 'active' : ''}}"
+          data-index="{{index}}" bindtap="onSwitchProp"
+        >{{item.name}}</view>
+        <view class="tab-add" bindtap="onAddProp">+ 添加</view>
+      </view>
+    </scroll-view>
+    <view class="tab-del" wx:if="{{properties.length}}" bindtap="onDelProp">🗑</view>
+  </view>
+
+  <!-- 房间网格 -->
+  <view class="room-section" wx:if="{{activePropId}}">
+    <view class="room-header">
+      <text class="section-label">房间（{{rooms.length}}间）</text>
+      <view class="btn-add-room" bindtap="onAddRoom">+ 添加</view>
+    </view>
+
+    <view class="room-grid">
+      <view class="room-cell" wx:for="{{rooms}}" wx:key="_id"
+        data-room="{{item}}" bindtap="onEditRoom">
+        <view class="cell-no">{{item.roomNumber}}</view>
+        <view class="cell-type">{{item.type || '大床房'}}</view>
+        <view class="cell-price">
+          <text wx:if="{{item.dailyPrice}}">¥{{item.dailyPrice}}/日</text>
+          <text wx:if="{{item.monthlyPrice}}" class="cell-month">¥{{item.monthlyPrice}}/月</text>
+        </view>
+      </view>
+      <view class="room-cell room-add" bindtap="onAddRoom">
+        <view class="cell-plus">+</view>
+        <view class="cell-hint">添加房间</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-zone" wx:if="{{!properties.length}}">
+    <view class="empty-icon">🏠</view>
+    <view class="empty-text">还没有房产</view>
+    <button class="btn-primary btn-sm" bindtap="onAddProp">创建第一个房产</button>
+  </view>
+
+  <!-- === 添加房产弹窗 === -->
+  <view class="dialog-mask" wx:if="{{showPropDialog}}" bindtap="onCloseDialog"></view>
+  <view class="dialog-panel" wx:if="{{showPropDialog}}">
+    <view class="dialog-title">添加房产</view>
+    <input class="dialog-input" placeholder="名称（如 A栋）" value="{{propName}}" bindinput="onPropName" />
+    <input class="dialog-input" placeholder="地址（选填）" value="{{propAddress}}" bindinput="onPropAddress" />
+    <view class="dialog-btns">
+      <button class="btn-outline btn-sm" bindtap="onCloseDialog">取消</button>
+      <button class="btn-primary btn-sm" bindtap="onConfirmProp">确认</button>
+    </view>
+  </view>
+
+  <!-- === 添加/编辑房间弹窗 === -->
+  <view class="dialog-mask" wx:if="{{showRoomDialog}}" bindtap="onCloseDialog"></view>
+  <view class="dialog-panel" wx:if="{{showRoomDialog}}">
+    <view class="dialog-title">{{editingRoom ? '编辑房间' : '添加房间'}}</view>
+    <view class="form-row">
+      <text class="form-label">房号</text>
+      <input class="dialog-input" placeholder="如 101" value="{{roomNumber}}" bindinput="onRoomNumber" />
+    </view>
+    <view class="form-row">
+      <text class="form-label">房型</text>
+      <picker mode="selector" range="{{['大床房','双人床']}}" bindchange="onRoomType">
+        <view class="picker-val">{{roomType}} ›</view>
+      </picker>
+    </view>
+    <view class="form-row">
+      <text class="form-label">日租价</text>
+      <input class="dialog-input" type="digit" placeholder="元/日" value="{{dailyPrice}}" bindinput="onDailyPrice" />
+    </view>
+    <view class="form-row">
+      <text class="form-label">月租价</text>
+      <input class="dialog-input" type="digit" placeholder="元/月" value="{{monthlyPrice}}" bindinput="onMonthlyPrice" />
+    </view>
+    <view class="dialog-btns">
+      <text class="del-link" wx:if="{{editingRoom}}" bindtap="onDelRoom">删除此房间</text>
+      <view class="dialog-right">
+        <button class="btn-outline btn-sm" bindtap="onCloseDialog">取消</button>
+        <button class="btn-primary btn-sm" bindtap="onConfirmRoom">确认</button>
+      </view>
+    </view>
+  </view>
+</view>

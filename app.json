@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/rooms/rooms",
+    "pages/rooms/detail",
+    "pages/bills/bills",
+    "pages/profile/profile",
+    "pages/sign/sign",
+    "pages/renew/renew",
+    "pages/meter/meter",
+    "pages/meter/history",
+    "pages/remind/remind",
+    "pages/password/password",
+    "pages/property/manage",
+    "pages/property/room-edit",
+    "pages/dashboard/dashboard"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "懒猫房东管理",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f3f0"
+  },
+  "tabBar": {
+    "color": "#b0a9a0",
+    "selectedColor": "#c8844a",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "看板"
+      },
+      {
+        "pagePath": "pages/rooms/rooms",
+        "text": "房源"
+      },
+      {
+        "pagePath": "pages/bills/bills",
+        "text": "账单"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,95 @@
+<!-- 看板 - 首页 -->
+<view class="container">
+
+  <!-- 顶部日期 -->
+  <view class="header">
+    <view class="header-date">{{today}}</view>
+    <view class="header-title">房源概览</view>
+  </view>
+
+  <!-- 数据卡片 -->
+  <view class="stat-row card">
+    <view class="stat-item" bindtap="onStatTap" data-type="rented">
+      <view class="stat-val rented">{{stats.rented}}</view>
+      <view class="stat-label">已出租</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item" bindtap="onStatTap" data-type="empty">
+      <view class="stat-val empty">{{stats.empty}}</view>
+      <view class="stat-label">空房中</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item" bindtap="onStatTap" data-type="cleaning">
+      <view class="stat-val cleaning">{{stats.cleaning}}</view>
+      <view class="stat-label">待清洁</view>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="card quick-section">
+    <view class="section-label">快捷操作</view>
+    <view class="quick-actions">
+      <view class="quick-item" bindtap="onSign">
+        <view class="q-icon icon-sign">📋</view>
+        <text>签单</text>
+      </view>
+      <view class="quick-item" bindtap="onRenew">
+        <view class="q-icon icon-renew">🔄</view>
+        <text>续租</text>
+      </view>
+      <view class="quick-item" bindtap="onMeter">
+        <view class="q-icon icon-meter">📝</view>
+        <text>抄表</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 收租提醒 -->
+  <view class="section-header">
+    <text class="section-label">收租提醒</text>
+    <text class="section-more" bindtap="onRemindAll">全部 ›</text>
+  </view>
+
+  <view class="card" wx:if="{{reminders.length}}">
+    <view class="remind-item" wx:for="{{reminders}}" wx:key="id">
+      <view class="remind-left">
+        <view class="remind-room">{{item.room}}</view>
+        <view class="remind-tenant">{{item.tenant}}</view>
+      </view>
+      <view class="remind-right">
+        <view class="remind-date">到期 {{item.endDate}}</view>
+        <view class="tag tag-warn">剩 {{item.daysLeft}} 天</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card empty-state" wx:else>
+    <text class="empty-icon">🎉</text>
+    <text class="empty-text">近期无到期房源</text>
+  </view>
+
+  <!-- 截图录入 -->
+  <view class="card upload-card" bindtap="onUploadScreenshot">
+    <view class="upload-icon">📸</view>
+    <view class="upload-title">截图录入</view>
+    <view class="upload-desc">上传订单截图，自动识别填充</view>
+  </view>
+
+  <!-- 房源列表弹窗 -->
+  <view class="room-modal-mask" wx:if="{{showRoomModal}}" bindtap="onCloseModal"></view>
+  <view class="room-modal" wx:if="{{showRoomModal}}">
+    <view class="room-modal-header">
+      <text class="room-modal-title">{{modalTitle}}</text>
+      <text class="room-modal-count">{{modalRooms.length}} 间</text>
+      <view class="room-modal-close" bindtap="onCloseModal">✕</view>
+    </view>
+    <scroll-view scroll-y class="room-modal-list">
+      <view class="room-modal-item" wx:for="{{modalRooms}}" wx:key="_id">
+        <text class="room-modal-name">{{item.name || item}}</text>
+        <view class="room-modal-del" wx:if="{{item._id}}" data-id="{{item._id}}" catchtap="onDelOrder">删除</view>
+      </view>
+      <view wx:if="{{!modalRooms.length}}" class="room-modal-empty">暂无</view>
+    </scroll-view>
+  </view>
+
+</view>

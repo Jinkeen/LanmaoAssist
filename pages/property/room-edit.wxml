@@ -1,0 +1,23 @@
+<view class="container">
+  <view class="section-title">{{propId}}栋 · 房间管理</view>
+
+  <view class="room-grid">
+    <view
+      class="room-cell {{item.status}}"
+      wx:for="{{rooms}}" wx:key="no"
+    >
+      <view class="cell-top">
+        <text class="cell-no">{{item.no}}</text>
+        <view class="tag tag-empty" wx:if="{{item.status === 'active'}}">上架</view>
+        <view class="tag tag-fixing" wx:else>下架</view>
+      </view>
+      <view class="cell-info">
+        <text>{{item.type}} · ¥{{item.price}}/晚</text>
+      </view>
+      <view class="cell-actions">
+        <text class="cell-link" data-no="{{item.no}}" bindtap="onEditRoom">编辑</text>
+        <text class="cell-link" data-index="{{index}}" bindtap="onToggleStatus">{{item.status === 'active' ? '下架' : '上架'}}</text>
+      </view>
+    </view>
+  </view>
+</view>

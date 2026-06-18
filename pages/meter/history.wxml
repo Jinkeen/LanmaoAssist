@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="section-title">水电租金登记</view>
+
+  <view class="card">
+    <view class="record-item" wx:for="{{records}}" wx:key="id">
+      <view class="rec-header">
+        <text class="rec-room">{{item.room}}</text>
+        <text class="rec-month">{{item.month}}</text>
+      </view>
+      <view class="rec-body">
+        <view class="rec-col">
+          <text class="rec-label">水</text>
+          <text class="rec-val">{{item.water}}</text>
+        </view>
+        <view class="rec-col">
+          <text class="rec-label">电</text>
+          <text class="rec-val">{{item.elec}}</text>
+        </view>
+        <view class="rec-col">
+          <text class="rec-label">租金</text>
+          <text class="rec-val price">¥{{item.rent}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

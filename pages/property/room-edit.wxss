@@ -1,0 +1,16 @@
+.section-title { font-size: 34rpx; font-weight: 700; padding: 30rpx 28rpx 16rpx; }
+
+.room-grid { display: flex; flex-wrap: wrap; gap: 16rpx; padding: 0 20rpx; }
+.room-cell {
+  width: calc(50% - 8rpx);
+  background: var(--card); border-radius: 16rpx;
+  padding: 24rpx; box-sizing: border-box;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.02);
+}
+.room-cell.inactive { opacity: 0.5; }
+
+.cell-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12rpx; }
+.cell-no { font-size: 36rpx; font-weight: 700; color: var(--text); }
+.cell-info { font-size: 24rpx; color: var(--text-light); margin-bottom: 16rpx; }
+.cell-actions { display: flex; gap: 24rpx; }
+.cell-link { font-size: 24rpx; color: var(--primary); padding: 4rpx 0; }

@@ -1,0 +1,37 @@
+.img-area { margin: 20rpx; }
+.img-placeholder {
+  width: 100%; height: 360rpx;
+  background: #ece9e4;
+  border-radius: 20rpx;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12rpx;
+}
+.img-icon { font-size: 64rpx; opacity: 0.4; }
+.img-hint { color: var(--text-light); }
+
+.info-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+.info-row:last-child { border-bottom: none; }
+.room-no { font-size: 36rpx; font-weight: 700; }
+.info-label { color: var(--text-light); }
+.info-val { font-weight: 500; }
+
+.quick-section { padding: 24rpx; }
+.section-label { font-size: 28rpx; font-weight: 600; margin-bottom: 20rpx; display: block; }
+.section-title { font-size: 28rpx; font-weight: 600; padding: 20rpx 28rpx 0; }
+.quick-row { display: flex; gap: 16rpx; }
+.quick-row button { flex: 1; height: 76rpx; line-height: 76rpx; font-size: 26rpx; }
+
+.history-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+.history-item:last-child { border-bottom: none; }
+.h-date { font-size: 26rpx; font-weight: 500; }
+.h-tenant { font-size: 24rpx; color: var(--text-light); margin-top: 4rpx; }
+.h-amount { font-size: 30rpx; font-weight: 600; color: var(--primary); }

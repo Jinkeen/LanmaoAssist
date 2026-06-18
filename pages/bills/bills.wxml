@@ -1,0 +1,48 @@
+<view class="container">
+
+  <!-- 账单类型切换 -->
+  <view class="tab-row">
+    <view
+      wx:for="{{tabs}}" wx:key="index"
+      class="tab-item {{activeTab === index ? 'active' : ''}}"
+      data-index="{{index}}"
+      bindtap="onTabTap"
+    >{{item}}</view>
+  </view>
+
+  <!-- 收支汇总 -->
+  <view class="sum-row card">
+    <view class="sum-item">
+      <view class="sum-label">收入</view>
+      <view class="sum-val income">+{{totalIncome}}</view>
+    </view>
+    <view class="sum-divider"></view>
+    <view class="sum-item">
+      <view class="sum-label">支出</view>
+      <view class="sum-val expense">-{{totalExpense}}</view>
+    </view>
+    <view class="sum-divider"></view>
+    <view class="sum-item">
+      <view class="sum-label">结余</view>
+      <view class="sum-val net">{{totalIncome - totalExpense}}</view>
+    </view>
+  </view>
+
+  <!-- 流水列表 -->
+  <view class="card" style="margin-top:0">
+    <view class="record-item" wx:for="{{records}}" wx:key="index">
+      <view class="rec-left">
+        <view class="rec-room">{{item.room}}</view>
+        <view class="rec-meta">
+          <text>{{item.date}}</text>
+          <text wx:if="{{item.source}}"> · {{item.source}}</text>
+          <text wx:if="{{item.note}}"> · {{item.note}}</text>
+        </view>
+      </view>
+      <view class="rec-amount {{item.type === 'income' ? 'income' : 'expense'}}">
+        {{item.type === 'income' ? '+' : '-'}}{{item.amount}}
+      </view>
+    </view>
+  </view>
+
+</view>

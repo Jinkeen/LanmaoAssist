@@ -1,0 +1,51 @@
+<view class="container">
+  <!-- 房间图片占位 -->
+  <view class="img-area">
+    <view class="img-placeholder">
+      <text class="img-icon">🏠</text>
+      <text class="img-hint">房间照片</text>
+    </view>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="card">
+    <view class="info-row">
+      <text class="room-no">{{room.roomNo}}</text>
+      <view class="tag tag-{{room.status}}">{{room.statusLabel}}</view>
+    </view>
+    <view class="info-row">
+      <text class="info-label">日租价格</text>
+      <text class="info-val">¥{{room.price}} / 晚</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">WiFi</text>
+      <text class="info-val">{{room.wifi}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">地址</text>
+      <text class="info-val">{{room.address}}</text>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="card quick-section">
+    <view class="section-label">快捷操作</view>
+    <view class="quick-row">
+      <button class="btn-primary btn-sm" bindtap="onSign">签单</button>
+      <button class="btn-outline btn-sm" bindtap="onRenew">续租</button>
+      <button class="btn-danger btn-sm" bindtap="onCheckout">退房</button>
+    </view>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="section-title">历史租住记录</view>
+  <view class="card" wx:if="{{history.length}}">
+    <view class="history-item" wx:for="{{history}}" wx:key="index">
+      <view class="h-left">
+        <view class="h-date">{{item.date}}</view>
+        <view class="h-tenant">{{item.tenant}} · {{item.source}}</view>
+      </view>
+      <view class="h-amount">¥{{item.amount}}</view>
+    </view>
+  </view>
+</view>

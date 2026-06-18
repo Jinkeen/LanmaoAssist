@@ -1,0 +1,46 @@
+.section-title { font-size: 34rpx; font-weight: 700; padding: 30rpx 28rpx 16rpx; }
+
+.info-row { display: flex; justify-content: space-between; align-items: center; padding: 28rpx 0; border-bottom: 1rpx solid var(--border); }
+.info-row:last-child { border-bottom: none; }
+.info-label { color: var(--text-light); }
+.info-val { font-weight: 500; }
+.info-val.placeholder { color: var(--text-light); font-weight: 400; }
+.info-val.price { color: var(--primary); font-size: 32rpx; font-weight: 700; }
+
+.field { display: flex; justify-content: space-between; align-items: center; padding: 32rpx 28rpx; }
+.field-label { flex-shrink: 0; min-width: 100rpx; }
+.field-input { flex: 1; text-align: right; font-size: 28rpx; }
+.field-val { flex: 1; text-align: right; }
+.field-val.placeholder { color: var(--text-light); }
+.field-arrow { font-size: 32rpx; color: #ccc; margin-left: 12rpx; }
+
+.submit-bar { padding: 32rpx 28rpx; }
+.submit-bar button { width: 100%; }
+
+/* 订单选择弹层 */
+.picker-mask {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100;
+}
+.picker-panel {
+  position: fixed; left: 32rpx; right: 32rpx; bottom: 10%;
+  max-height: 55vh;
+  background: #fff; border-radius: 20rpx; z-index: 101;
+  display: flex; flex-direction: column;
+}
+.picker-title {
+  font-size: 30rpx; font-weight: 700;
+  padding: 28rpx 28rpx 16rpx; border-bottom: 1rpx solid var(--border);
+}
+.picker-list {
+  flex: 1; max-height: 40vh;
+}
+.picker-item {
+  padding: 22rpx 28rpx; font-size: 26rpx;
+  border-bottom: 1rpx solid #f5f3f0;
+}
+.picker-item.active {
+  background: #fdf6f0; color: var(--primary); font-weight: 600;
+}
+.picker-empty {
+  text-align: center; padding: 60rpx 0; color: #ccc; font-size: 26rpx;
+}

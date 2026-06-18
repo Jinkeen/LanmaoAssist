@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="section-title">收租提醒</view>
+  <view class="section-desc">以下租客租期将在3天内到期</view>
+
+  <view class="remind-card card" wx:for="{{reminders}}" wx:key="id">
+    <view class="remind-top">
+      <view class="remind-room">{{item.room}}</view>
+      <view class="tag tag-warn">剩 {{item.daysLeft}} 天</view>
+    </view>
+    <view class="remind-info">
+      <text>租客：{{item.tenant}}（{{item.phone}}）</text>
+      <text>到期：{{item.endDate}}</text>
+    </view>
+    <view class="remind-bill">
+      <view class="bill-item">
+        <text class="bill-label">电话</text>
+        <text class="bill-val">{{item.phone}}</text>
+      </view>
+      <view class="bill-item">
+        <text class="bill-label">待收租金</text>
+        <text class="bill-val price">¥{{item.rent}}</text>
+      </view>
+    </view>
+    <view class="remind-actions">
+      <button class="btn-primary btn-sm" data-item="{{item}}" bindtap="onCopyBill">复制待收款账单</button>
+    </view>
+  </view>
+</view>

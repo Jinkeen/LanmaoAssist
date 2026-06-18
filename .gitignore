@@ -1,0 +1,21 @@
+# 微信web开发者工具 （误复制进来的，1GB+）
+微信web开发者工具/
+
+# Claude Code
+.claude/
+
+# 依赖
+node_modules/
+
+# 云函数本地依赖
+cloudfunctions/*/node_modules/
+
+# 编辑器
+.vscode/
+.idea/
+
+# 临时文件
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
